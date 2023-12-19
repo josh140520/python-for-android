@@ -6,6 +6,7 @@ import shutil
 
 
 class MatplotlibRecipe(CppCompiledComponentsPythonRecipe):
+    need_stl_shared = True
 
     version = '3.5.2'
     url = 'https://github.com/matplotlib/matplotlib/archive/v{version}.zip'
