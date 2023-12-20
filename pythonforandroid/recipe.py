@@ -116,7 +116,7 @@ class Recipe(with_metaclass(RecipeMeta)):
               path: `'.', None or ''`
     """
 
-    need_stl_shared = False
+    need_stl_shared = True
     '''Some libraries or python packages may need to be linked with android's
     stl. We can automatically do this for any recipe if we set this property to
     `True`'''
