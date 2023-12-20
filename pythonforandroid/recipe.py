@@ -576,8 +576,8 @@ class Recipe(metaclass=RecipeMeta):
         if hasattr(self, postbuild):
             getattr(self, postbuild)()
 
-        if self.need_stl_shared:
-            self.install_stl_lib(arch)
+        #if self.need_stl_shared:
+        self.install_stl_lib(arch)
 
     def prepare_build_dir(self, arch):
         '''Copies the recipe data into a build dir for the given arch. By
