@@ -124,7 +124,7 @@ class Recipe(metaclass=RecipeMeta):
               directory, you can set the following values for the relative
               path: `'.', None or ''`
     """
-
+    global need_stl_shared
     need_stl_shared = True
     '''Some libraries or python packages may need the c++_shared in APK.
     We can automatically do this for any recipe if we set this property to
@@ -571,6 +571,7 @@ class Recipe(metaclass=RecipeMeta):
         self.install_libs(arch, *shared_libs)
 
     def postbuild_arch(self, arch):
+        global need_stl_shared
         '''Run any post-build tasks for the Recipe. By default, this checks if
         any postbuild_archname methods exist for the archname of the
         current architecture, and runs them if so.
@@ -578,7 +579,7 @@ class Recipe(metaclass=RecipeMeta):
         postbuild = "postbuild_{}".format(arch.arch)
         if hasattr(self, postbuild):
             getattr(self, postbuild)()
-
+        need_stl_shared = True
         if self.need_stl_shared:
             self.install_stl_lib(arch)
 
